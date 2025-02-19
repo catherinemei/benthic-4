@@ -505,7 +505,14 @@ export function HypergraphNodeComponentKeyboardOnly(
   }
 
   const sortAdjacents = createMemo(() => {
-    const adjacentNodeIds = findSiblings(props.node.id);
+    let adjacentNodeIds = findSiblings(props.node.id);
+
+    // Special hack for user study - hide groupings to hide improbable relations
+    if (props.node.id === "2") {
+      adjacentNodeIds = adjacentNodeIds.filter((id) => {
+        return id !== "1";
+      });
+    }
 
     const adjacentNodes = Array.from(adjacentNodeIds)
       .map((nodeId) => props.nodeGraph[nodeId])
