@@ -570,6 +570,7 @@ export function HypergraphNodeComponentKeyboardOnly(
       <ul
         id="parents-group"
         tabindex="0"
+        role='group'
         aria-label={
           nonFocusedParentIds().length === 0
             ? `${
@@ -600,7 +601,7 @@ export function HypergraphNodeComponentKeyboardOnly(
         </span>
       </ul>
 
-      <ul tabindex="0" id="option-nodes">
+      <ul tabindex="0" id="option-nodes" role='group'>
         <For each={nonFocusedParents()}>
           {(parent, idx) => (
             <li
@@ -618,7 +619,7 @@ export function HypergraphNodeComponentKeyboardOnly(
       </ul>
       <br />
 
-      <ul id="home" tabindex="0" aria-live="assertive">
+      <ul id="home" tabindex="0" aria-live="assertive" role='group'>
         <For
           each={sortAdjacents()}
           fallback={<li style={{ color: "grey" }}>None</li>}
